@@ -58,8 +58,14 @@ endif
         echo "Installing vim-plug.."
         echo ""
         silent !mkdir -p ~/.vim/autoload
-        silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        silent !wget -cO ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         let plug_installed=0
+    endif
+
+    if plug_installed == 0
+        echo "Installing Plugs..."
+        echo ""
+        :PlugInstall
     endif
 
     call plug#begin('~/.vim/plugged')
@@ -70,12 +76,6 @@ endif
     Plug 'scrooloose/syntastic'
     Plug 'majutsushi/tagbar'
     call plug#end()
-
-    if plug_installed == 0
-        echo "Installing Plugs..."
-        echo ""
-        :PlugInstall
-    endif
 " end vim-plug
 
 " start UltiSnips

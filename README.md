@@ -1,6 +1,7 @@
 myvim
 =====
-1. Auto initialize
-- `ln -sf myvim/UltiSnips ~/.vim/`
-- `ln -sf myvim/.vimrc ~`
+1. sudo apt-get install exuberant-ctags
 - `ln -sf myvim/.bash_aliases ~`
+- `ln -sf myvim/.vimrc ~`
+- `vim` Auto initialize
+- `ln -sf myvim/UltiSnips ~/.vim/`

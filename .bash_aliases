@@ -8,7 +8,7 @@ alias findpy='find . -name '\''*.py'\'''
 alias findpyg='find . -name '\''*.py'\'' | xargs grep -n --color=auto'
 alias yuml='yum --disableexcludes=Local'
 alias xclipc='xclip -selection c'
-alias openconnectuw='openconnect dept-ra-cssc.vpn.wisc.edu'
+alias openconnectuw='sudo openconnect dept-ra-cssc.vpn.wisc.edu'
 
 # shell的彩色显示
 export LS_OPTIONS='--color=auto'
