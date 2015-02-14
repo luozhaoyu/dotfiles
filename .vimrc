@@ -72,7 +72,7 @@ endif
     call plug#end()
 
     if plug_installed == 0
-        echo "Installing Plugs..."
+        echo "Installing Plugs: PlugInstall..."
         echo ""
         :PlugInstall
     endif
@@ -82,4 +82,8 @@ endif
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:ultisnips_python_style="google"
 " end UltiSnips
+" start syntastic
+    let g:syntastic_python_pylint_post_args='--disable=C0103,F0401'
+" end syntastic

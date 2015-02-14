@@ -38,13 +38,18 @@ $0
 endsnippet
 
 snippet main "main() (main)"
-include <stdio.h>
-include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 int main(int argc, char *argv[])
 {
+    if (argc <= ${1:1}) {
+        printf("Only %i arguments are provided, exiting...", argc);
+        exit(1);
+    }
     ${VISUAL}${0}
+
     return 0;
 }
 endsnippet
@@ -52,7 +57,7 @@ endsnippet
 snippet for "for loop (for)"
 for (${2:i} = 0; $2 < ${1:count}; ${3:++$2})
 {
-	${VISUAL}${0}
+    ${VISUAL}${0}
 }
 endsnippet
 
