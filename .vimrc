@@ -75,6 +75,7 @@ endif
     Plug 'SirVer/ultisnips'
     Plug 'scrooloose/syntastic'
     Plug 'majutsushi/tagbar'
+    Plug 'fatih/vim-go'
     call plug#end()
 
     if plug_installed == 0
