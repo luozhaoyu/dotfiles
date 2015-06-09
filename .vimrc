@@ -58,7 +58,7 @@ endif
         echo "Installing vim-plug.."
         echo ""
         silent !mkdir -p ~/.vim/autoload
-        silent !wget -cO ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        silent !wget --no-check-certificate -cO ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         let plug_installed=0
     endif
 
