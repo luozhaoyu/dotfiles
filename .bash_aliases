@@ -25,4 +25,5 @@ alias grep='grep --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias emacs='emacs -nw'
+
+alias em="emacs -nw"
