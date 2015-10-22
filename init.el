@@ -18,10 +18,16 @@
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
 		     rainbow-delimiters highlight-symbol hl-sexp
+             go-autocomplete go-eldoc flycheck flymake
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/")
+             )
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/")
+             )
+
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 ; fetch the list of packages available 
@@ -48,16 +54,29 @@
 (setq highlight-symbol-idle-delay 0.5)
 (add-hook 'find-file-hook #'highlight-symbol-mode)
 
+; go-mode
+; go get -u github.com/dougm/goflymake)
+; go get -u golang.org/x/tools/cmd/goimports
+; remeber to set PATH=$GOPATH/bin:$PATH
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(defun go-mode-setup ()
+ (setq compile-command "go build -v && go test -v && go vet")
+ (define-key (current-local-map) "\C-c\C-c" 'compile)
+ (go-eldoc-setup)
+ (setq gofmt-command "goimports")
+ (local-set-key (kbd "M-.") 'godef-jump))
+
+    (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
+    (require 'flycheck)
+    (require 'flymake)
+    (require 'go-flymake)
+    (require 'go-flycheck)
+
+    (require 'go-autocomplete)
+    (require 'auto-complete-config)
+    (ac-config-default)
+
+    (require 'go-eldoc) ;; Don't need to require, if you install by package.el
+    (add-hook 'go-mode-hook 'go-eldoc-setup)
+    (add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook 'go-mode-setup)
