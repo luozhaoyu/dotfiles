@@ -57,6 +57,9 @@
 ; go-mode
 ; go get -u github.com/dougm/goflymake)
 ; go get -u golang.org/x/tools/cmd/goimports
+; go get -u github.com/rogpeppe/godef
+; go get -u github.com/nsf/gocode
+; go get -u github.com/kisielk/errcheck
 ; remeber to set PATH=$GOPATH/bin:$PATH
 
 (defun go-mode-setup ()
@@ -72,6 +75,7 @@
     (require 'go-flymake)
     (require 'go-flycheck)
 
+    (require 'auto-complete)
     (require 'go-autocomplete)
     (require 'auto-complete-config)
     (ac-config-default)
