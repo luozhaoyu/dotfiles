@@ -18,7 +18,8 @@
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
 		     rainbow-delimiters highlight-symbol hl-sexp
-             go-autocomplete go-eldoc flycheck flymake
+		     go-autocomplete go-eldoc flycheck flymake
+		     epc jedi jedi-core
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
@@ -84,3 +85,13 @@
     (add-hook 'go-mode-hook 'go-eldoc-setup)
     (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook 'go-mode-setup)
+
+; python-mode
+; http://tkf.github.io/emacs-jedi/latest/#install
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+;; Type:
+;;     M-x package-install RET jedi RET
+;;     M-x jedi:install-server RET
+;; Then open Python file.
