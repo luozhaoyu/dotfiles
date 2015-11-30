@@ -49,7 +49,8 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(add-hook 'prog-mode-hook #'hl-sexp-mode)
+(add-hook 'emacs-lisp-mode-hook #'hl-sexp-mode)
+(add-hook 'clojure-mode-hook #'hl-sexp-mode)
 
 (require 'highlight-symbol)
 (setq highlight-symbol-idle-delay 0.5)
