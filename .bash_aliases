@@ -13,10 +13,9 @@ alias openconnectuw='sudo openconnect dept-ra-cssc.vpn.wisc.edu'
 # shell的彩色显示
 export LS_OPTIONS='--color=auto'
 # eval "`dircolors`"
-alias la='ls -A'
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -lh'
-alias l='ls $LS_OPTIONS -lA'
+# alias ls='ls $LS_OPTIONS'
+alias ls='ls -FG'
+alias ll='ls -@l'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
@@ -27,3 +26,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias em="emacs -nw"
+
+export GOPATH=$HOME/gocode
+# export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin

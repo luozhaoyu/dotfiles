@@ -62,6 +62,7 @@
 ; go get -u github.com/rogpeppe/godef
 ; go get -u github.com/nsf/gocode
 ; go get -u github.com/kisielk/errcheck
+; go get -u golang.org/x/tools/cmd/oracle
 ; remeber to set PATH=$GOPATH/bin:$PATH
 
 (defun go-mode-setup ()
@@ -69,7 +70,8 @@
  (define-key (current-local-map) "\C-c\C-c" 'compile)
  (go-eldoc-setup)
  (setq gofmt-command "goimports")
- (local-set-key (kbd "M-.") 'godef-jump))
+ ;(local-set-key (kbd "\C-d") 'godef-jump))
+ (local-set-key (kbd "\C-x d") 'godef-jump))
 
     (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
     (require 'flycheck)
@@ -85,6 +87,9 @@
     (require 'go-eldoc) ;; Don't need to require, if you install by package.el
     (add-hook 'go-mode-hook 'go-eldoc-setup)
     (add-hook 'before-save-hook 'gofmt-before-save)
+
+    ; go oracle
+    (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 (add-hook 'go-mode-hook 'go-mode-setup)
 
 ; python-mode
