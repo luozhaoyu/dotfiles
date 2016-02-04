@@ -52,21 +52,13 @@
 (add-hook 'emacs-lisp-mode-hook #'hl-sexp-mode)
 (add-hook 'clojure-mode-hook #'hl-sexp-mode)
 
-(require 'highlight-symbol)
-(setq highlight-symbol-idle-delay 0.5)
-(add-hook 'find-file-hook #'highlight-symbol-mode)
+;(require 'highlight-symbol)
+;(setq highlight-symbol-idle-delay 0.5)
+;(add-hook 'find-file-hook #'highlight-symbol-mode)
 
 ; go-mode
-; go get -u github.com/dougm/goflymake)
-; go get -u golang.org/x/tools/cmd/goimports
-; go get -u github.com/rogpeppe/godef
-; go get -u github.com/nsf/gocode
-; go get -u github.com/kisielk/errcheck
-; go get -u golang.org/x/tools/cmd/oracle
-; remeber to set PATH=$GOPATH/bin:$PATH
-
 (defun go-mode-setup ()
- (setq compile-command "go build -v && go test -v && go vet")
+ (setq compile-command "golint && go build -v && go test -race -v && go vet")
  (define-key (current-local-map) "\C-c\C-c" 'compile)
  (go-eldoc-setup)
  (setq gofmt-command "goimports")
@@ -90,7 +82,19 @@
 
     ; go oracle
     (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+
+    ; go lint
+    (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+    (require 'golint)
 (add-hook 'go-mode-hook 'go-mode-setup)
+
+(defun my-go-mode-hook ()
+    (whitespace-mode -1) ; don't highlight hard tabs
+      (setq
+       tab-width 2         ; display tabs as two-spaces
+       indent-tabs-mode 1  ; use hard tabs to indent
+       fill-column 100))   ; set a reasonable fill width
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ; python-mode
 ; http://tkf.github.io/emacs-jedi/latest/#install
