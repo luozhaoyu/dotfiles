@@ -52,9 +52,15 @@
 (add-hook 'emacs-lisp-mode-hook #'hl-sexp-mode)
 (add-hook 'clojure-mode-hook #'hl-sexp-mode)
 
-;(require 'highlight-symbol)
-;(setq highlight-symbol-idle-delay 0.5)
-;(add-hook 'find-file-hook #'highlight-symbol-mode)
+(require 'highlight-symbol)
+(setq highlight-symbol-idle-delay 0.25)
+(add-hook 'find-file-hook #'highlight-symbol-mode)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(highlight-symbol-face ((t (:inverse-video t)))))
 
 ; go-mode
 (defun go-mode-setup ()
