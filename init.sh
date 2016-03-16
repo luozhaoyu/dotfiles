@@ -11,6 +11,8 @@ go get -u github.com/golang/lint/golint     # check for style violations
 # me
 go get -u github.com/dougm/goflymake
 go get -u github.com/kisielk/errcheck
+# http://www.nongnu.org/emacsdoc-fr/manuel/shell.html
+go get -u github.com/google/codesearch/cmd/...
 
 # handle the emacs evil ESC eval problem
 echo "set -s escape-time 0" >> ~/.tmux.conf

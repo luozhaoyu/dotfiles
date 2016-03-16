@@ -18,8 +18,9 @@
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
 		     rainbow-delimiters highlight-symbol hl-sexp
-		     go-autocomplete go-eldoc flycheck flymake
+		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core
+		     neotree
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
@@ -62,20 +63,24 @@
  ;; If there is more than one, they won't work right.
  '(highlight-symbol-face ((t (:inverse-video t)))))
 
+(require 'flycheck)
+(global-flycheck-mode)
+
+; folding
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
 ; go-mode
 (defun go-mode-setup ()
- (setq compile-command "golint && go build -v && go test -race -v && go vet")
- (define-key (current-local-map) "\C-c\C-c" 'compile)
- (go-eldoc-setup)
- (setq gofmt-command "goimports")
- ;(local-set-key (kbd "\C-d") 'godef-jump))
- (local-set-key (kbd "\C-x d") 'godef-jump))
+    (setq compile-command "golint && go build -v && go test -race -v && go vet")
+    (define-key (current-local-map) "\C-c\C-c" 'compile)
+    (go-eldoc-setup)
+    (setq gofmt-command "goimports")
+    (evil-define-key 'normal go-mode-map (kbd "gD") 'godef-jump)
 
     (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
-    (require 'flycheck)
-    (require 'flymake)
-    (require 'go-flymake)
-    (require 'go-flycheck)
+    ;(require 'flymake)
+    ;(require 'go-flymake)
+    ;(require 'go-flycheck)
 
     (require 'auto-complete)
     (require 'go-autocomplete)
@@ -91,7 +96,7 @@
 
     ; go lint
     (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
-    (require 'golint)
+    (require 'golint))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
 (defun my-go-mode-hook ()
@@ -103,11 +108,28 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ; python-mode
-; http://tkf.github.io/emacs-jedi/latest/#install
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
+(defun python-mode-setup ()
 ;; Type:
 ;;     M-x package-install RET jedi RET
 ;;     M-x jedi:install-server RET
 ;; Then open Python file.
+    ; http://tkf.github.io/emacs-jedi/latest/#install
+    (jedi:setup)
+    (setq jedi:complete-on-dot t))
+    (evil-define-key 'normal python-mode-map (kbd "gD") 'jedi:goto-definition)
+(add-hook 'python-mode-hook 'python-mode-setup)
+
+
+; https://www.emacswiki.org/emacs/NeoTree
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
+
+(add-hook 'neotree-mode-hook
+(lambda ()
+  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+  (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+  (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;(setq stack-trace-on-error t)
