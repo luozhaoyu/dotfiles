@@ -1,4 +1,5 @@
 set nocompatible     "not compatible with vi
+set backspace=indent,eol,start
 set number
 "set paste
 set ruler

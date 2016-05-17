@@ -21,6 +21,7 @@
 		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core
 		     neotree
+		     codesearch
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
@@ -28,6 +29,9 @@
              )
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/")
+             )
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/")
              )
 
 ; activate all the packages (in particular autoloads)
@@ -71,7 +75,7 @@
 
 ; go-mode
 (defun go-mode-setup ()
-    (setq compile-command "golint && go build -v && go test -race -v && go vet")
+    (setq compile-command "golint && godep go build -v && godep go test -race -v && go vet")
     (define-key (current-local-map) "\C-c\C-c" 'compile)
     (go-eldoc-setup)
     (setq gofmt-command "goimports")
@@ -80,7 +84,7 @@
     (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
     ;(require 'flymake)
     ;(require 'go-flymake)
-    ;(require 'go-flycheck)
+    (require 'go-flycheck)
 
     (require 'auto-complete)
     (require 'go-autocomplete)
@@ -119,6 +123,9 @@
     (evil-define-key 'normal python-mode-map (kbd "gD") 'jedi:goto-definition)
 (add-hook 'python-mode-hook 'python-mode-setup)
 
+; codesearch
+(require 'codesearch)
+(define-key evil-normal-state-map (kbd "gs") 'codesearch-search)
 
 ; https://www.emacswiki.org/emacs/NeoTree
 (require 'neotree)
