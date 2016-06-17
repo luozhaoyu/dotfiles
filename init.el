@@ -84,7 +84,7 @@
     (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake")))
     ;(require 'flymake)
     ;(require 'go-flymake)
-    (require 'go-flycheck)
+    ;(require 'go-flycheck)
 
     (require 'auto-complete)
     (require 'go-autocomplete)
