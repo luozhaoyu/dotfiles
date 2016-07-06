@@ -13,6 +13,7 @@ go get -u github.com/dougm/goflymake
 go get -u github.com/kisielk/errcheck
 # http://www.nongnu.org/emacsdoc-fr/manuel/shell.html
 go get -u github.com/google/codesearch/cmd/...
+go get -u golang.org/x/tools/cmd/gorename # rename
 
 # handle the emacs evil ESC eval problem
 echo "set -s escape-time 0" >> ~/.tmux.conf

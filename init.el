@@ -49,6 +49,44 @@
 (require 'evil)
 (evil-mode 1)
 
+
+; for speeding up and down
+(setq my-scroll-counter 0)
+(setq up-down-gear 3)
+(setq left-right-gear 2)
+(setq my-last-scroll 0)
+(setq my-scroll-interval 0.3)
+
+(defun hjkl-timer()
+  (let ((now (float-time)))
+    (if (and (eq last-command this-command)
+	     (< (- now my-last-scroll) my-scroll-interval))
+	(incf my-scroll-counter)
+      (setq my-scroll-counter 0))
+    (setq my-last-scroll now)))
+
+(defun speed-up()
+  (interactive)
+  (hjkl-timer)
+  (previous-line (+ 1 (/ my-scroll-counter up-down-gear))))
+(defun speed-down()
+  (interactive)
+  (hjkl-timer)
+  (next-line (+ 1 (/ my-scroll-counter up-down-gear))))
+(defun speed-left()
+  (interactive)
+  (hjkl-timer)
+  (left-char (+ 1 (/ my-scroll-counter left-right-gear))))
+(defun speed-right()
+  (interactive)
+  (hjkl-timer)
+  (right-char (+ 1 (/ my-scroll-counter left-right-gear))))
+(define-key evil-normal-state-map (kbd "k") 'speed-up)
+(define-key evil-normal-state-map (kbd "j") 'speed-down)
+(define-key evil-normal-state-map (kbd "h") 'speed-left)
+(define-key evil-normal-state-map (kbd "l") 'speed-right)
+
+
 (require 'yasnippet)
 (yas-global-mode 1)
 
