@@ -1,7 +1,6 @@
 myvim
 =====
-1. sudo apt-get install exuberant-ctags
-- `ln -sf myvim/.bash_aliases ~`
-- `ln -sf myvim/.vimrc ~`
-- `vim` Auto initialize
-- `ln -sf myvim/UltiSnips ~/.vim/`
+1. mkdir ~/codes
+- cd ~/codes
+- `git clone https://github.com/luozhaoyu/myvim.git`
+- ./init.sh

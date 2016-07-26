@@ -1,4 +1,10 @@
 #!/bin/sh
+# setup
+ln -sf ~/codes/myvim/.bash_aliases ~
+ln -sf ~/codes/myvim/.vimrc ~`
+ln -sf ~/codes/myvim/UltiSnips ~/.vim/
+ln -sf ~/codes/myvim/init.el ~/.emacs.d/
+
 # company
 go get -u github.com/rogpeppe/godef         # jump to function definition
 go get -u golang.org/x/tools/cmd/goimports  # auto-import on format
