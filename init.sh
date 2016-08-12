@@ -1,7 +1,7 @@
 #!/bin/sh
 # setup
 ln -sf ~/codes/myvim/.bash_aliases ~
-ln -sf ~/codes/myvim/.vimrc ~`
+ln -sf ~/codes/myvim/.vimrc ~
 ln -sf ~/codes/myvim/UltiSnips ~/.vim/
 ln -sf ~/codes/myvim/init.el ~/.emacs.d/
 
