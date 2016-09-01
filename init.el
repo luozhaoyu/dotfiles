@@ -51,6 +51,7 @@
 
 
 ; for speeding up and down
+(require 'cl)
 (setq my-scroll-counter 0)
 (setq up-down-gear 3)
 (setq left-right-gear 2)
