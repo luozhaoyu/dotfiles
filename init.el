@@ -14,6 +14,8 @@
 ; M-x package-list-package
 ; M-x package-menu-execute
 ; list the packages you want installed
+(package-refresh-contents)
+
 (require 'package)
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
@@ -133,9 +135,6 @@
     (require 'go-eldoc) ;; Don't need to require, if you install by package.el
     (add-hook 'go-mode-hook 'go-eldoc-setup)
     (add-hook 'before-save-hook 'gofmt-before-save)
-
-    ; go oracle
-    (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
     ; go lint
     (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
