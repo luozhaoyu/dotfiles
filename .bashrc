@@ -1,4 +1,10 @@
-# vim /etc/bash.bashrc ~/.bash_aliases
+# vim /etc/bash.bashrc
+# http://mywiki.wooledge.org/DotFiles
+# https://stackoverflow.com/questions/902946/about-bash-profile-bashrc-and-where-should-alias-be-written-in/903213#903213
+
+# env settings should be in .profile
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOPATH/bin
 
 alias difff='diff -bBy --suppress-common'
 alias duh1='du -h --max-depth=1'
@@ -10,13 +16,22 @@ alias findgog='find . -name '\''*.go'\'' | xargs grep -n --color=auto'
 alias yuml='yum --disableexcludes=Local'
 alias xclipc='xclip -selection c'
 alias openconnectuw='sudo openconnect dept-ra-cssc.vpn.wisc.edu'
+rsyncfolder () {
+    rsync -avz $1 $2:~/$1
+}
 
-# shell的彩色显示
-export LS_OPTIONS='--color=auto'
-# eval "`dircolors`"
-#alias ls='ls $LS_OPTIONS'
-alias ls='ls -FG'
+case "$OSTYPE" in
+  darwin*)
+    alias ls='ls -FG'
+    alias sstlnp="netstat -anp tcp |grep LISTEN"
+    ;;
+  linux*)
+    alias ls='ls --color'
+    ;;
+  *) ;;
+esac
 alias ll='ls -l'
+
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
@@ -28,9 +43,3 @@ alias mv='mv -i'
 
 alias em="emacs -nw"
 alias cindexreset="cindex -reset ."
-
-alias sstlnp="netstat -anp tcp |grep LISTEN"
-
-export GOPATH=$HOME/gocode
-# export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOPATH/bin
