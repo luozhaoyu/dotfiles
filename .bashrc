@@ -1,3 +1,4 @@
+#!/bin/sh
 # vim /etc/bash.bashrc
 # http://mywiki.wooledge.org/DotFiles
 # https://stackoverflow.com/questions/902946/about-bash-profile-bashrc-and-where-should-alias-be-written-in/903213#903213
@@ -17,7 +18,11 @@ alias yuml='yum --disableexcludes=Local'
 alias xclipc='xclip -selection c'
 alias openconnectuw='sudo openconnect dept-ra-cssc.vpn.wisc.edu'
 rsyncfolder () {
-    rsync -avz $1 $2:~/$1
+	rsync -avz $1 $2:~/$1
+}
+
+ssh_tunnel () {
+	ssh -fNT -L $2:localhost:$2 $1
 }
 
 case "$OSTYPE" in
