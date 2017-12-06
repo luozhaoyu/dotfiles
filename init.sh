@@ -2,10 +2,10 @@
 # setup
 mkdir ~/.emacs.d
 mkdir ~/.vim
-ln -sf ~/codes/myvim/.bashrc ~
-ln -sf ~/codes/myvim/.vimrc ~
-ln -sf ~/codes/myvim/UltiSnips ~/.vim/
-ln -sf ~/codes/myvim/init.el ~/.emacs.d/
+ln -sf ~/codes/dotfiles/.bashrc ~
+ln -sf ~/codes/dotfiles/.vimrc ~
+ln -sf ~/codes/dotifles/UltiSnips ~/.vim/
+ln -sf ~/codes/dotfiles/init.el ~/.emacs.d/
 
 # company
 go get -u github.com/nsf/gocode
