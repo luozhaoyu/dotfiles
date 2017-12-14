@@ -1,10 +1,11 @@
 #!/bin/sh
+MYFOLDER=$HOME/codes/dotfiles/
 # setup
-mkdir ~/.emacs.d
+echo ". $MYFOLDER/.bashrc" >> $HOME/.bashrc
+echo "source $MYFOLDER/.vimrc" >> $HOME/.vimrc
 mkdir ~/.vim
-ln -sf ~/codes/dotfiles/.bashrc ~
-ln -sf ~/codes/dotfiles/.vimrc ~
 ln -sf ~/codes/dotifles/UltiSnips ~/.vim/
+mkdir ~/.emacs.d
 ln -sf ~/codes/dotfiles/init.el ~/.emacs.d/
 
 # company
