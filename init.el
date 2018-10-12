@@ -14,26 +14,27 @@
 ; M-x package-list-package
 ; M-x package-menu-execute
 ; list the packages you want installed
-(package-refresh-contents)
+; TODO: delete this?
+;(package-refresh-contents)
 
 (require 'package)
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
 		     rainbow-delimiters highlight-symbol hl-sexp
+		     codesearch
 		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core
 		     neotree
-		     codesearch
 		    ))
 ; list the repositories containing them
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/")
+             )
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/")
              )
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/")
-             )
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
              )
 
 ; activate all the packages (in particular autoloads)
