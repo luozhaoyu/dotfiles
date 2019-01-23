@@ -20,10 +20,11 @@
 (require 'package)
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet
-		     rainbow-delimiters highlight-symbol hl-sexp
+		     rainbow-delimiters highlight-symbol
+             ; hl-sexp
 		     codesearch
 		     go-autocomplete go-eldoc flycheck
-		     epc jedi jedi-core
+		     epc jedi jedi-core elpy
 		     neotree
 		    ))
 ; list the repositories containing them
@@ -33,9 +34,9 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/")
              )
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/")
-             )
+;(add-to-list 'package-archives
+;             '("marmalade" . "http://marmalade-repo.org/packages/")
+;             )
 
 ; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -96,8 +97,8 @@
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-(add-hook 'emacs-lisp-mode-hook #'hl-sexp-mode)
-(add-hook 'clojure-mode-hook #'hl-sexp-mode)
+;(add-hook 'emacs-lisp-mode-hook #'hl-sexp-mode)
+;(add-hook 'clojure-mode-hook #'hl-sexp-mode)
 
 (require 'highlight-symbol)
 (setq highlight-symbol-idle-delay 0.25)
