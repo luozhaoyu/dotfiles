@@ -26,12 +26,13 @@ ssh_tunnel () {
 	ssh -fNT -L $2:localhost:$2 $1
 }
 
-case "$OSTYPE" in
-  darwin*)
+OSTYPE="$(uname -s)"
+case "${OSTYPE}" in
+  Darwin*)
     alias ls='ls -FG'
     alias sstlnp="netstat -anp tcp |grep LISTEN"
     ;;
-  linux*)
+  Linux*)
     alias ls='ls --color'
     ;;
   *) ;;
