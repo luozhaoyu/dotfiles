@@ -1,4 +1,7 @@
 #!/bin/sh
+alias python='python3'
+alias pip='pip3'
+
 alias difff='diff -bBy --suppress-common'
 alias duh1='du -h --max-depth=1'
 alias findall='find / -name'

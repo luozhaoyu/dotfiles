@@ -25,6 +25,7 @@
 		     codesearch
 		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core elpy
+             py-yapf
 		     neotree
 		    ))
 ; list the repositories containing them
@@ -163,6 +164,11 @@
     (evil-define-key 'normal python-mode-map (kbd "gD") 'jedi:goto-definition)
 (add-hook 'python-mode-hook 'python-mode-setup)
 
+(elpy-enable)
+
+(require 'py-yapf)
+(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+
 ; codesearch
 (require 'codesearch)
 (define-key evil-normal-state-map (kbd "gs") 'codesearch-search)
@@ -173,10 +179,23 @@
 (setq neo-smart-open t)
 
 (add-hook 'neotree-mode-hook
-(lambda ()
-  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-  (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+              (lambda ()
+                (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+                (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+                (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+                (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+                (define-key evil-normal-state-local-map (kbd "g") 'neotree-refresh)
+                (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
+                (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
+                (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
+                (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
 
 ;(setq stack-trace-on-error t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))))
