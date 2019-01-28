@@ -1,4 +1,6 @@
 #!/bin/sh
+set PATH $PATH $HOME/go/bin/
+
 alias python='python3'
 alias pip='pip3'
 
