@@ -6,6 +6,7 @@
 (setq scroll-margin 7)
 (setq scroll-conservatively 10000)
 (setq redisplay-dont-pause t)
+(setq-default mode-line-buffer-identification 'buffer-file-name)  ; display full path
 (show-paren-mode 1)
 
 
