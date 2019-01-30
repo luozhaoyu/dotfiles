@@ -6,17 +6,20 @@ clean:
 
 MYFOLDER=${HOME}/codes/dotfiles/
 
-install:
+install: install-links
 	# setup
 	echo ". ${MYFOLDER}/.bashrc" >> ${HOME}/.bashrc
 	echo "source ${MYFOLDER}/.vimrc" >> ${HOME}/.vimrc
-	mkdir ${HOME}/.vim
-	ln -sf ${HOME}/codes/dotifles/UltiSnips ${HOME}/.vim/
-	mkdir ${HOME}/.emacs.d
-	ln -sf ${HOME}/codes/dotfiles/init.el ${HOME}/.emacs.d/
 
 	# handle the emacs evil ESC eval problem
 	echo "set -s escape-time 0" >> ~/.tmux.conf
+
+install-links:
+	-mkdir ${HOME}/.vim
+	ln -sf ${PWD}/UltiSnips ${HOME}/.vim/
+	-mkdir ${HOME}/.emacs.d
+	ln -sf ${PWD}/init.el ${HOME}/.emacs.d/
+	ln -sf ${PWD}/snippets ${HOME}/.emacs.d/
 
 install-go:
 	# company

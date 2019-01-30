@@ -26,7 +26,7 @@
 
 (require 'package)
 (setq package-list '(
-		     evil go-mode cider clojure-mode python-mode yasnippet
+		     evil go-mode cider clojure-mode python-mode yasnippet yasnippet-snippets
 		     rainbow-delimiters highlight-symbol
              ; hl-sexp
 		     codesearch
