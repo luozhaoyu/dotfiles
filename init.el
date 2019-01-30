@@ -1,4 +1,10 @@
-; basics
+;;; init.el --- Initialization file for Emacs
+;;; Commentary:
+; C-h b (M-x describe-bindings) will show all bindings
+; C-h v (M-x describe-variable)
+; C-h f (M-x describe-function)
+; M-: eval-expression
+
 
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 (setq column-number-mode t)
@@ -170,9 +176,9 @@
 (require 'py-yapf)
 (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 
-; codesearch
+; codesearch https://github.com/abingham/emacs-codesearch#commands
 (require 'codesearch)
-(define-key evil-normal-state-map (kbd "gs") 'codesearch-search)
+(define-key evil-normal-state-map (kbd "gs") 'listing-codesearch-search)
 
 ; https://www.emacswiki.org/emacs/NeoTree
 (require 'neotree)
@@ -190,6 +196,7 @@
                 (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
                 (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
                 (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+(define-key evil-normal-state-map (kbd "|") 'neotree-find)
 
 ;(setq stack-trace-on-error t)
 (custom-set-variables
