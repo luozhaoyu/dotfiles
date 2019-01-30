@@ -61,6 +61,7 @@
 ; installed package configurations
 (require 'evil)
 (evil-mode 1)
+(evil-ex-define-cmd "k" 'kill-buffer)
 
 
 ; for speeding up and down
