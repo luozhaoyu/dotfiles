@@ -12,7 +12,8 @@
 (setq scroll-margin 7)
 (setq scroll-conservatively 10000)
 (setq redisplay-dont-pause t)
-(setq-default mode-line-buffer-identification 'buffer-file-name)  ; display full path
+; https://www.gnu.org/software/emacs/manual/html_node/elisp/_0025_002dConstructs.html#g_t_0025_002dConstructs
+(setq-default mode-line-buffer-identification '("%I %f"))  ; display file size and full path
 (show-paren-mode 1)
 
 
