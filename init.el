@@ -62,6 +62,7 @@
 (require 'evil)
 (evil-mode 1)
 (evil-ex-define-cmd "k" 'kill-buffer)
+; need to customize evil-symbol-word-search to enable symbol search rather than word
 
 
 ; for speeding up and down
@@ -206,6 +207,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-symbol-word-search t)
  '(package-selected-packages
    (quote
     (rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))))
