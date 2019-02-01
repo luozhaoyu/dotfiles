@@ -16,6 +16,12 @@ ssh_tunnel () {
 	ssh -fNT -L $2:localhost:$2 $1
 }
 
+git_lint_without_overrite_history () {
+# https://stackoverflow.com/questions/3945382/git-commit-that-doesnt-override-original-authors-in-git-blame
+# https://medium.com/millennial-falcon-technology/reformatting-your-code-base-using-prettier-or-eslint-without-destroying-git-history-35052f3d853e
+    git filter-branch --subdirectory-filter lib/orm/base/ --tree-filter 'yapf' -- --all
+}
+
 OSTYPE="$(uname -s)"
 case "${OSTYPE}" in
   Darwin*)

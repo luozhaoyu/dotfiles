@@ -20,6 +20,7 @@ alias ll='ls -l'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+alias ackpy='ack -v -g --type=python "test|tests" | ack -x'
 
 # 重要操作前提示
 alias rm='rm -i'
