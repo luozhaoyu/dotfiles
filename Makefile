@@ -20,6 +20,7 @@ install-links:
 	-mkdir ${HOME}/.emacs.d
 	ln -sf ${PWD}/init.el ${HOME}/.emacs.d/
 	ln -sf ${PWD}/snippets ${HOME}/.emacs.d/
+	ln -sf ${PWD}/customize ${HOME}/.emacs.d/
 
 install-go:
 	# company

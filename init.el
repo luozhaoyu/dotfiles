@@ -17,6 +17,14 @@
 (show-paren-mode 1)
 
 
+(defun load-directory (dir)
+  (let ((load-it (lambda (f)
+		   (load-file (concat (file-name-as-directory dir) f)))
+		 ))
+    (mapc load-it (directory-files dir nil "\\.el$"))))
+(load-directory "~/.emacs.d/customize/")
+
+
 ; auto install
 ; evil go-mode cider clojure-mode python-mode
 ; M-x package-list-package
@@ -33,7 +41,6 @@
 		     codesearch
 		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core elpy
-             py-yapf
 		     neotree
 		    ))
 ; list the repositories containing them
@@ -176,8 +183,7 @@
 
 (elpy-enable)
 
-(require 'py-yapf)
-(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+(add-hook 'python-mode-hook 'blacken-mode)
 
 ; codesearch https://github.com/abingham/emacs-codesearch#commands
 (require 'codesearch)
