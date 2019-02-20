@@ -183,7 +183,9 @@
 
 (elpy-enable)
 
-(add-hook 'python-mode-hook 'blacken-mode)
+; TODO: need a smart way to not auto format existing code
+;(add-hook 'python-mode-hook 'blacken-mode)
+(evil-ex-define-cmd "bb" 'blacken-buffer)
 
 ; codesearch https://github.com/abingham/emacs-codesearch#commands
 (require 'codesearch)
