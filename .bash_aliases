@@ -4,6 +4,8 @@ set PATH $PATH $HOME/go/bin/
 alias python='python3'
 alias pip='pip3'
 
+alias git-log-graph='git log --graph --pretty=oneline --abbrev-commit'
+
 alias difff='diff -bBy --suppress-common'
 alias duh1='du -h --max-depth=1'
 alias findall='find / -name'
