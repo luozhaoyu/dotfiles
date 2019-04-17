@@ -1,0 +1,3 @@
+[submodule "customize/git-link"]
+	path = customize/git-link
+	url = https://github.com/sshaw/git-link.git

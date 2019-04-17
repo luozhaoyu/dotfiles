@@ -110,6 +110,10 @@
 (define-key evil-normal-state-map (kbd "l") 'speed-right)
 
 
+(load "~/.emacs.d/customize/git-link/git-link")
+(define-key evil-normal-state-map (kbd "gl") 'git-link)
+
+
 (require 'yasnippet)
 (yas-global-mode 1)
 
