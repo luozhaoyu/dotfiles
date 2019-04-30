@@ -6,7 +6,7 @@
 
 # env settings should be in .profile
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$PATH/local/bin
 
 rsyncfolder () {
 	rsync -avz $1 $2:~/$1
