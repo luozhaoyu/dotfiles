@@ -42,6 +42,7 @@
 		     go-autocomplete go-eldoc flycheck
 		     epc jedi jedi-core elpy
 		     neotree
+		     rust-mode
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
@@ -173,6 +174,12 @@
        fill-column 100))   ; set a reasonable fill width
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
+
+; rust-mode
+(require 'rust-mode)
+(setq rust-format-on-save t)
+
+
 ; python-mode
 (defun python-mode-setup ()
 ;; Type:
@@ -222,4 +229,4 @@
  '(evil-symbol-word-search t)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))))
+    (rust-mode rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))))
