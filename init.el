@@ -30,7 +30,7 @@
 ; M-x package-list-package
 ; M-x package-menu-execute
 ; list the packages you want installed
-; TODO: delete this?
+; refresh package list if package becomes outdated
 ;(package-refresh-contents)
 
 (require 'package)
@@ -43,6 +43,7 @@
 		     epc jedi jedi-core elpy
 		     neotree
 		     rust-mode
+		     yaml-mode
 		    ))
 ; list the repositories containing them
 (add-to-list 'package-archives
@@ -178,6 +179,8 @@
 ; rust-mode
 (require 'rust-mode)
 (setq rust-format-on-save t)
+;(with-eval-after-load 'rust-mode
+;  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 
 ; python-mode

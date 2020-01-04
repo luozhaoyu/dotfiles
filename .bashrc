@@ -5,8 +5,9 @@
 # https://stackoverflow.com/questions/902946/about-bash-profile-bashrc-and-where-should-alias-be-written-in/903213#903213
 
 # env settings should be in .profile
-export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$PATH/local/bin
+export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH=$HOME/go
 
 rsyncfolder () {
 	rsync -avz $1 $2:~/$1
