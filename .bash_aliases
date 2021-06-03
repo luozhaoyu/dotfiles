@@ -1,5 +1,5 @@
 #!/bin/sh
-set PATH $PATH $HOME/go/bin/ $HOME/local/bin $HOME/.cargo/bin
+set PATH $PATH $HOME/go/bin/ $HOME/local/bin $HOME/.cargo/bin $HOME/Library/Python/3.8/bin
 
 alias python='python3'
 alias pip='pip3'

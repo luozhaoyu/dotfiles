@@ -37,6 +37,7 @@
 (setq package-list '(
 		     evil go-mode cider clojure-mode python-mode yasnippet yasnippet-snippets
 		     rainbow-delimiters highlight-symbol
+             git-link
              ; hl-sexp
 		     codesearch
 		     go-autocomplete go-eldoc flycheck
@@ -112,7 +113,6 @@
 (define-key evil-normal-state-map (kbd "l") 'speed-right)
 
 
-(load "~/.emacs.d/customize/git-link/git-link")
 (define-key evil-normal-state-map (kbd "gl") 'git-link)
 
 
@@ -231,5 +231,4 @@
  ;; If there is more than one, they won't work right.
  '(evil-symbol-word-search t)
  '(package-selected-packages
-   (quote
-    (rust-mode rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))))
+   '(rust-mode rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider)))

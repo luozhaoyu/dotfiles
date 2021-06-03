@@ -9,7 +9,13 @@ clean:
 
 MYFOLDER=${HOME}/codes/dotfiles/
 
-install: install-links
+${HOME}/.config/fish/config.fish:
+
+fish: ${HOME}/.config/fish/config.fish
+	brew install fish
+	ln -sf ${PWD}/config.fish ${HOME}/.config/fish/config.fish
+
+install: install-links fish
 	# setup
 	echo ". ${MYFOLDER}/.bashrc" >> ${HOME}/.bashrc
 	echo "source ${MYFOLDER}/.vimrc" >> ${HOME}/.vimrc
