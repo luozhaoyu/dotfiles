@@ -31,3 +31,5 @@ alias mv='mv -i'
 
 alias em="emacs -nw"
 alias cindexreset="cindex -reset ."
+
+alias k="kubectl"
