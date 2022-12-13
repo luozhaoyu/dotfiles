@@ -1,9 +1,9 @@
 if status --is-interactive
-    source $HOME/codes/dotfiles/.bash_aliases
+    source $HOME/repos/dotfiles/.bash_aliases
 end
 
 if status --is-interactive
-    source $HOME/codes/dotfiles/company.fish
+    source $HOME/repos/dotfiles/company.fish
 end
 
 set -x SPARK_HOME /opt/spark
