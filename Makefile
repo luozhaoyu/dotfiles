@@ -15,7 +15,8 @@ fish: ${HOME}/.config/fish/config.fish
 	brew install fish
 	mkdir -p ${HOME}/.config/fish
 	ln -sf ${PWD}/config.fish ${HOME}/.config/fish/config.fish
-	echo /usr/local/bin/fish | sudo tee -a /etc/shells
+	ln -sf /opt/homebrew/bin/fish /usr/local/bin
+	echo /usr/local/bin/fish | tee -a /etc/shells
 	chsh -s /usr/local/bin/fish
 
 install: install-links fish
