@@ -1,5 +1,6 @@
 ;;; init.el --- Initialization file for Emacs
 ;;; Commentary:
+;; Emacs reference card: https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 ;; C-h b (M-x describe-bindings) will show all bindings
 ;; C-h v (M-x describe-variable)
 ;; C-h f (M-x describe-function)
@@ -133,8 +134,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight-symbol-face ((t 
-			   (:inverse-video t)))))
+ '(highlight-symbol-face ((t (:inverse-video t)))))
 
 (require 'flycheck)
 (global-flycheck-mode)
@@ -149,7 +149,7 @@
   (define-key (current-local-map) "\C-c\C-c" 'compile) 
   (go-eldoc-setup) 
   (setq gofmt-command "goimports") 
-  (evil-define-key 'normal go-mode-map (kbd "gD") 'godef-jump) 
+  (evil-define-key 'normal go-mode-map (kbd "gd") 'godef-jump) 
   (add-to-list 'load-path (expand-file-name (concat (getenv "GOPATH")
 						    "/src/github.com/dougm/goflymake")))
 					;(require 'flymake)
@@ -192,7 +192,7 @@
   "Setup Python mode."
   (jedi:setup) 
   (setq jedi:complete-on-dot t))
-(evil-define-key 'normal python-mode-map (kbd "gD") 'jedi:goto-definition)
+(evil-define-key 'normal python-mode-map (kbd "gd") 'jedi:goto-definition)
 (add-hook 'python-mode-hook 'python-mode-setup)
 
 (elpy-enable)
@@ -228,14 +228,22 @@
 				 'neotree-hidden-file-toggle)))
 (define-key evil-normal-state-map (kbd "|") 'neotree-find)
 
+
+;; tabs
+(define-key evil-normal-state-map "t" 'tab-bar-switch-to-next-tab)
+(define-key evil-normal-state-map "T" 'tab-bar-switch-to-prev-tab)
+(define-key evil-normal-state-map (kbd "C-t") 'tab-new)
+
+
 ;;(setq stack-trace-on-error t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-symbol-word-search t) 
- '(package-selected-packages '(rust-mode rainbow-delimiters python-mode neotree jedi
-					 highlight-symbol go-eldoc go-autocomplete flycheck evil
-					 elpy codesearch cider)))
+ '(evil-symbol-word-search t)
+ '(evil-undo-system 'undo-redo)
+ '(package-selected-packages
+   '(rust-mode rainbow-delimiters python-mode neotree jedi highlight-symbol go-eldoc go-autocomplete flycheck evil elpy codesearch cider))
+ '(tide-allow-popup-select '(code-fix refactor)))
 ;;; init.el ends here
