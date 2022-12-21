@@ -75,7 +75,7 @@
 ;; for speeding up and down
 (require 'cl)
 (setq my-scroll-counter 0)
-(setq up-down-gear 2)			; the smaller, the faster
+(setq up-down-gear 1)			; the smaller, the faster
 (setq left-right-gear 2)
 (setq my-last-scroll 0)
 (setq my-scroll-interval 0.3)

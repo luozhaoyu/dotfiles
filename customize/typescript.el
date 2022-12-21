@@ -23,7 +23,11 @@
   ;; https://github.com/ananthakumaran/tide/blob/96bfc5da11a9b83b32368c38e933a405270652de/tide.el#L2257-L2258
   ;; https://github.com/emacs-evil/evil-collection#key-translation
   (evil-define-key 'normal tide-mode-map (kbd "gd") 'tide-jump-to-definition (kbd "gD")
-    'tide-jump-back))
+    'tide-jump-back (kbd "gs") 'tide-references)
+
+  ;; enable normal state mode (not only special mode) can go to reference by RET
+  ;; https://github.com/ananthakumaran/tide/blob/master/tide.el#L1921
+  (evil-define-key 'normal tide-references-mode-map (kbd "RET") #'tide-goto-line-reference))
 
 
 ;; aligns annotation to the right hand side
