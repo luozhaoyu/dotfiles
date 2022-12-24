@@ -27,7 +27,11 @@
 
   ;; enable normal state mode (not only special mode) can go to reference by RET
   ;; https://github.com/ananthakumaran/tide/blob/master/tide.el#L1921
-  (evil-define-key 'normal tide-references-mode-map (kbd "RET") #'tide-goto-line-reference))
+  (evil-define-key 'normal tide-references-mode-map (kbd "RET") #'tide-goto-line-reference)
+
+  ;; disallow typescript mode to change indent behavior: use default behavior for tabs
+  ;; https://github.com/emacs-typescript/typescript.el/blob/d79551c67ff5f2bd5f651eb411cdc66ceeb787e3/typescript-mode.el#L3061
+  (setq-local indent-line-function 'indent-relative))
 
 
 ;; aligns annotation to the right hand side
