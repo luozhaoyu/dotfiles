@@ -32,7 +32,7 @@
   ;; disallow typescript mode to change indent behavior: use default behavior for tabs
   ;; https://github.com/emacs-typescript/typescript.el/blob/d79551c67ff5f2bd5f651eb411cdc66ceeb787e3/typescript-mode.el#L3061
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Auto_002dIndentation.html
-  (setq-local indent-line-function 'indent-relative)
+  (setq-local indent-line-function 'tab-to-tab-stop)
 
   ;; disallow auto indent when typing some chars
   ;; https://github.com/emacs-typescript/typescript.el/blob/v0.4/typescript-mode.el#L2951-L2952
